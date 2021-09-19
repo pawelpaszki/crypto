@@ -1,0 +1,26 @@
+import { Coin } from './coin';
+
+export const COINS: Coin[] = [
+  { id: 'bitcoin', name: 'Bitcoin', quantity: 0.000216, eur: 0, usd: 0, location: 'cb', paid: 0, value: 0, sellPrice: 0, image: '', xD: 0,_24h: 0, _7d: 0, _30d: 0, prices: []},
+  { id: 'fantom', name: 'Fantom', quantity: 5605, eur: 0, usd: 0, location: 'binance', paid: 5783.76, value: 0, sellPrice: 8.25, image: '', xD: 0,_24h: 0, _7d: 0, _30d: 0, prices: []},
+  // { id: 'fantom', name: 'Fantom', quantity: 4377, eur: 0, usd: 0, location: 'binance', paid: 4378.92, value: 0, sellPrice: 8  , image: '', xD: 0,_24h: 0, _7d: 0, _30d: 0, prices: []},
+  { id: 'fantom', name: 'Fantom', quantity: 1415, eur: 0, usd: 0, location: 'binance', paid: 1428.697, value: 0, sellPrice: 8.25, image: '', xD: 0,_24h: 0, _7d: 0, _30d: 0, prices: []},
+  { id: 'convergence', name: 'Convergence', quantity: 40201.005, eur: 0, usd: 0, location: 'mm', paid: 909.72, value: 0, sellPrice: 0.5, image: '', xD: 0,_24h: 0, _7d: 0, _30d: 0, prices: []},
+  { id: 'ethereum', name: 'ethereum', quantity: 0.0648, eur: 0, usd: 0, location: 'mm', paid: 180, value: 0, sellPrice: 0, image: '', xD: 0,_24h: 0, _7d: 0, _30d: 0, prices: []},
+  { id: 'saito', name: 'Saito', quantity: 500000, eur: 0, usd: 0, location: 'mm', paid: 4900.26, value: 0, sellPrice: 0.3, image: '', xD: 0,_24h: 0, _7d: 0, _30d: 0, prices: []},
+  { id: 'saito', name: 'Saito', quantity: 173454.499, eur: 0, usd: 0, location: 'mm', paid: 1827.9, value: 0, sellPrice: 1, image: '', xD: 0,_24h: 0, _7d: 0, _30d: 0, prices: []},
+  { id: 'dungeonswap', name: 'DungeonSwap', quantity: 561.118, eur: 0, usd: 0, location: 'bsc', paid: 840, value: 0, sellPrice: 12, image: '', xD: 0,_24h: 0, _7d: 0, _30d: 0, prices: []},
+  { id: 'hedera-hashgraph', name: 'Hedera Hashgraph', quantity: 9207.783, eur: 0, usd: 0, location: 'ledger', paid: 2400, value: 0, sellPrice: 3.1, image: '', xD: 0,_24h: 0, _7d: 0, _30d: 0, prices: []},
+  { id: 'hedera-hashgraph', name: 'Hedera Hashgraph', quantity: 12196, eur: 0, usd: 0, location: 'ledger', paid: 2573.453, value: 0, sellPrice: 3.1, image: '', xD: 0,_24h: 0, _7d: 0, _30d: 0, prices: []},
+  // { id: 'cardano', name: 'Cardano', quantity: 2728.4566, eur: 0, usd: 0, location: 'bsc', paid: 3146.64, value: 0, sellPrice: 100, image: '', xD: 0, prices: []},
+  { id: 'nft-stars', name: 'NFT Stars', quantity: 5.7133, eur: 0, usd: 0, location: 'bsc', paid: 4.742, value: 0, sellPrice: 10, image: '', xD: 0,_24h: 0, _7d: 0, _30d: 0, prices: []},
+  { id: 'liquidifty', name: 'Liquidifty', quantity: 3.3155, eur: 0, usd: 0, location: 'bsc', paid: 2.743, value: 0, sellPrice: 20, image: '', xD: 0,_24h: 0, _7d: 0, _30d: 0, prices: []},
+  { id: 'Eur', name: 'Euro', quantity: 1, eur: 0, usd: 1.16, location: 'bank', paid: 1, value: 0, sellPrice: 0, image: '', xD: 0,_24h: 0, _7d: 0, _30d: 0, prices: []},
+  // { id: 'konomi-network', name: 'Konomi Network', quantity: 2501.457, eur: 0, usd: 0, location: 'mm', paid: 1486.6965, value: 0, sellPrice: 15, image: '', xD: 0,_24h: 0, _7d: 0, _30d: 0, prices: []},
+  // { id: 'tether', name: 'Tether', quantity: 2200, eur: 0, usd: 0, location: 'binance', paid: 1800, value: 0, sellPrice: 0, image: '', xD: 0,_24h: 0, _7d: 0, _30d: 0, prices: []},
+  // { id: 'binance-usd', name: 'Binance USD', quantity: 26.679, eur: 0, usd: 0, location: 'bsc', paid: 21, value: 0, sellPrice: 0, image: '', xD: 0,_24h: 0, _7d: 0, _30d: 0, prices: []},
+  { id: 'binancecoin', name: 'Binance Coin', quantity: 0.0857, eur: 0, usd: 0, location: 'bsc', paid: 25, value: 0, sellPrice: 1000, image: '', xD: 0,_24h: 0, _7d: 0, _30d: 0, prices: []},
+  { id: 'crosswallet', name: 'CrossWallet', quantity: 8620.03, eur: 0, usd: 0, location: 'bsc', paid: 14.239, value: 0, sellPrice: 0.5, image: '', xD: 0,_24h: 0, _7d: 0, _30d: 0, prices: []},
+  { id: 'decubate', name: 'Decubate', quantity: 252.368, eur: 0, usd: 0, location: 'bsc', paid: 3.142, value: 0, sellPrice: 1, image: '', xD: 0,_24h: 0, _7d: 0, _30d: 0, prices: []},
+  { id: 'swapz-app', name: 'Swapz', quantity: 3105.4, eur: 0, usd: 0, location: 'bsc', paid: 12.887, value: 0, sellPrice: 0.5, image: '', xD: 0,_24h: 0, _7d: 0, _30d: 0, prices: []},
+];

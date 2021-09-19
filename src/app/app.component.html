@@ -1,20 +1,170 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<button class="button" (click)="updateCoins()">Refresh</button>
 
+<div>
+  <div class="container">
+    <div class="box box1">
+      Icon
+    </div>
+    <div class="box box5">  
+      Name 
+      <i class="fas fa-sort-amount-up" (click)="sort('name', 'asc')"
+      [ngStyle]="{'display': sortOrder === 'desc' ? 'inline' : 'none', 'color': sortBy === 'name' ? '#4CAF50' : 'white'}"
+      ></i>
+      <i class="fas fa-sort-amount-down" (click)="sort('name', 'desc')"
+      [ngStyle]="{'display': sortOrder === 'asc' ? 'inline' : 'none', 'color': sortBy === 'name' ? '#4CAF50' : 'white'}"
+      ></i>
+    </div>
+    <div class="box box2">
+      USD price
+      <i class="fas fa-sort-amount-up" (click)="sort('usd', 'asc')"
+      [ngStyle]="{'display': sortOrder === 'desc' ? 'inline' : 'none', 'color': sortBy === 'usd' ? '#4CAF50' : 'white'}"
+      ></i>
+      <i class="fas fa-sort-amount-down" (click)="sort('usd', 'desc')"
+      [ngStyle]="{'display': sortOrder === 'asc' ? 'inline' : 'none', 'color': sortBy === 'usd' ? '#4CAF50' : 'white'}"
+      ></i>
+    </div>
+    <div class="box box2">
+      sell price ($)
+      <i class="fas fa-sort-amount-up" (click)="sort('sellPrice', 'asc')"
+      [ngStyle]="{'display': sortOrder === 'desc' ? 'inline' : 'none', 'color': sortBy === 'sellPrice' ? '#4CAF50' : 'white'}"
+      ></i>
+      <i class="fas fa-sort-amount-down" (click)="sort('sellPrice', 'desc')"
+      [ngStyle]="{'display': sortOrder === 'asc' ? 'inline' : 'none', 'color': sortBy === 'sellPrice' ? '#4CAF50' : 'white'}"
+      ></i>
+    </div>
+    <div class="box box2">
+      Eur price
+      <i class="fas fa-sort-amount-up" (click)="sort('eur', 'asc')"
+      [ngStyle]="{'display': sortOrder === 'desc' ? 'inline' : 'none', 'color': sortBy === 'eur' ? '#4CAF50' : 'white'}"
+      ></i>
+      <i class="fas fa-sort-amount-down" (click)="sort('eur', 'desc')"
+      [ngStyle]="{'display': sortOrder === 'asc' ? 'inline' : 'none', 'color': sortBy === 'eur' ? '#4CAF50' : 'white'}"
+      ></i>
+    </div>
+    <div class="box box2">
+      Quantity
+      <i class="fas fa-sort-amount-up" (click)="sort('quantity', 'asc')"
+      [ngStyle]="{'display': sortOrder === 'desc' ? 'inline' : 'none', 'color': sortBy === 'quantity' ? '#4CAF50' : 'white'}"
+      ></i>
+      <i class="fas fa-sort-amount-down" (click)="sort('quantity', 'desc')"
+      [ngStyle]="{'display': sortOrder === 'asc' ? 'inline' : 'none', 'color': sortBy === 'quantity' ? '#4CAF50' : 'white'}"
+      ></i>
+    </div>
+    <div class="box box2">
+      Eur paid
+      <i class="fas fa-sort-amount-up" (click)="sort('paid', 'asc')"
+      [ngStyle]="{'display': sortOrder === 'desc' ? 'inline' : 'none', 'color': sortBy === 'paid' ? '#4CAF50' : 'white'}"
+      ></i>
+      <i class="fas fa-sort-amount-down" (click)="sort('paid', 'desc')"
+      [ngStyle]="{'display': sortOrder === 'asc' ? 'inline' : 'none', 'color': sortBy === 'paid' ? '#4CAF50' : 'white'}"
+      ></i>
+    </div>
+    <div class="box box2">
+      USD value
+    </div>
+    <div class="box box2">
+      Eur value
+      <i class="fas fa-sort-amount-up" (click)="sort('value', 'asc')"
+      [ngStyle]="{'display': sortOrder === 'desc' ? 'inline' : 'none', 'color': sortBy === 'value' ? '#4CAF50' : 'white'}"
+      ></i>
+      <i class="fas fa-sort-amount-down" (click)="sort('value', 'desc')"
+      [ngStyle]="{'display': sortOrder === 'asc' ? 'inline' : 'none', 'color': sortBy === 'value' ? '#4CAF50' : 'white'}"
+      ></i>
+    </div>
+    <div class="box box1">
+      Xd
+      <i class="fas fa-sort-amount-up" (click)="sort('xD', 'asc')"
+      [ngStyle]="{'display': sortOrder === 'desc' ? 'inline' : 'none', 'color': sortBy === 'xD' ? '#4CAF50' : 'white'}"
+      ></i>
+      <i class="fas fa-sort-amount-down" (click)="sort('xD', 'desc')"
+      [ngStyle]="{'display': sortOrder === 'asc' ? 'inline' : 'none', 'color': sortBy === 'xD' ? '#4CAF50' : 'white'}"
+      ></i>
+    </div>
+  </div>
+  <div *ngFor="let coin of coins">
+    <app-cryptocurrency [coin]="coin"></app-cryptocurrency>
+      <!-- <div class="box box1" [ngStyle]="{'padding': coin.name === 'Euro' ? '0px !important' : '8px' }">
+        <div *ngIf="coin.name === 'Euro'" style="margin-bottom: -12px; padding-left: 4px; font-size: 14px; font-weight: 900;">
+          €
+        </div>
+        <div *ngIf="coin.image !== null">
+          <img style="height: 15px;" src="{{coin.image}}">
+        </div>
+      </div>
+      <div class="box box2">{{coin.name}} [{{coin.location}}]</div>
+      <div class="box box2" style="font-weight: 900;" *ngIf="0 >= coin._24h" [ngStyle]="{'color': coin._24h > 0 ? 'lightgreen' : 'lightpink' }">
+        {{coin.usd | number : '1.1-9'}}  (&#9660;{{coin._24h | number : '1.1-2'}}%)
+      </div>
+      <div class="box box2" style="font-weight: 900;" *ngIf="coin._24h > 0" [ngStyle]="{'color': coin._24h > 0 ? 'lightgreen' : 'lightpink' }">
+        {{coin.usd | number : '1.1-9'}}  (&#9650;{{coin._24h | number : '1.1-2'}}%)
+      </div>
+      <div class="box box2" [ngStyle]="{'background-color': coin.sellPrice > coin.usd ? 'red' : 'green' }">{{coin.sellPrice | number : '1.1-9'}}</div>
+      <div class="box box2">{{coin.eur | number : '1.1-9'}}</div>
+      <div class="box box2">{{coin.quantity}}</div>
+      <div class="box box2">{{coin.paid | number}}</div>
+      <div class="box box2">{{coin.quantity * coin.usd | number}}</div>
+      <div class="box box2" [ngStyle]="{'background-color': coin.paid > coin.value ? 'red' : 'green' }">{{coin.value | number : '1.1-3'}}</div>
+      <div class="box box1" [ngStyle]="{'background-color': coin.xD > 0.99999 ? 'green' : 'red' }">{{coin.xD | number: '1.1-2'}}</div> -->
+  </div>
+  <div class="container">
+    <div class="box box6"></div>
+    <div class="box box4"></div>
+    <div class="box box4"></div>
+    <div class="box box3"></div>
+    <div class="box box3"></div>
+    <div class="box box3"></div>
+    <div class="box box3"></div>
+    <div class="box box2">Total</div>
+    <div class="box box2">{{balance | number}}</div>
+    <div class="box box6"></div>
+  </div>
+  <!-- <div class="container">
+    <div class="box box6"></div>
+    <div class="box box4"></div>
+    <div class="box box4"></div>
+    <div class="box box3"></div>
+    <div class="box box3"></div>
+    <div class="box box3"></div>
+    <div class="box box3"></div>
+    <div class="box box2">Spent</div>
+    <div class="box box2">{{total}}</div>
+    <div class="box box6"></div>
+  </div> -->
+  <div class="container">
+    <div class="box box6"></div>
+    <div class="box box4"></div>
+    <div class="box box4"></div>
+    <div class="box box3"></div>
+    <div class="box box3"></div>
+    <div class="box box3"></div>
+    <div class="box box3"></div>
+    <div class="box box2">Tax Due</div>
+    <div class="box box2">{{tax}}</div>
+    <div class="box box6"></div>
+  </div>
+  <div class="container">
+    <div class="box box6"></div>
+    <div class="box box4"></div>
+    <div class="box box4"></div>
+    <div class="box box3"></div>
+    <div class="box box3"></div>
+    <div class="box box3"></div>
+    <div class="box box3"></div>
+    <div class="box box2">Balance before tax</div>
+    <div class="box box2" [ngStyle]="{'background-color': balance - tax > 0 ? 'green' : 'red' }">{{balance - tax | number}}</div>
+    <div class="box box6"></div>
+  </div>
+</div>
+
+<!-- <div *ngFor="let coin of coins">
+  <button class="cybr-btn">
+    {{coin.name}}<span aria-hidden>_</span>
+    <span aria-hidden class="cybr-btn__glitch">{{coin.name}}</span>
+    <span aria-hidden class="cybr-btn__tag">R25</span>
+  </button>
+</div>
+<button class="cybr-btn">
+  Buttons<span aria-hidden>_</span>
+  <span aria-hidden class="cybr-btn__glitch">Buttons_</span>
+  <span aria-hidden class="cybr-btn__tag">R25</span>
+</button> -->

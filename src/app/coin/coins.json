@@ -1,0 +1,20 @@
+{
+  "coins": [
+    { "id": "vechain", "name": "vechain", "quantity": 8878.390, "eur": 0, "usd": 0, "paid": 1407.224, "value": 0, "location": "binance", "sellPrice": 1.8, "image": ""},
+    { "id": "convergence", "name": "convergence", "quantity": 51802.387, "eur": 0, "usd": 0, "paid": 4614.01, "value": 0, "location": "metamask", "sellPrice": 1.5, "image": ""},
+    { "id": "beyond-finance", "name": "beyond-finance", "quantity": 145.493, "eur": 0, "usd": 0, "location": "metmask", "paid": 381.192, "value": 0, "sellPrice": 20, "image": ""},
+    { "id": "labs-group", "name": "labs-group", "quantity": 9022.641, "eur": 0, "usd": 0, "location": "metamask", "paid": 262.56, "value": 0, "sellPrice": 0.7, "image": ""},
+    { "id": "ripple", "name": "ripple", "quantity": 201.40, "eur": 0,"usd": 0, "location": "binance", "paid": 177.63, "value": 0, "sellPrice": 0, "image": ""},
+    { "id": "tether", "name": "Tether", "quantity": 4003.64911250, "eur": 0, "usd": 0, "location": "metamask", "paid": 500, "value": 0, "sellPrice": 0, "image": ""},
+    { "id": "ethereum", "name": "ethereum", "quantity": 0.3959, "eur": 0, "usd": 0, "location": "metamask", "paid": 904.8, "value": 0, "sellPrice": 0, "image": ""},
+    { "id": "tidal-finance", "name": "Tidal Finance", "quantity": 162578.241, "eur": 0, "usd": 0, "location": "metamask", "paid": 2398.87, "value": 0, "sellPrice": 0.8, "image": ""},
+    { "id": "blind-boxes", "name": "Blind Boxes", "quantity": 779.358, "eur": 0, "usd": 0, "location": "metamask", "paid": 996.78, "value": 0, "sellPrice": 12, "image": ""},
+    { "id": "saito", "name": "Saito", "quantity": 272992.084, "eur": 0, "usd": 0, "location": "metamask", "paid": 4599.95, "value": 0, "sellPrice": 0.8, "image": ""},
+    { "id": "ethbox-token", "name": "Ethbox Token", "quantity": 5531.245, "eur": 0, "usd": 0, "location": "metamask", "paid": 999.98, "value": 0, "sellPrice": 4, "image": ""},
+    { "id": "sifchain", "name": "Sifchain", "quantity": 819.9615, "eur": 0, "usd": 0, "location": "metamask", "paid": 450.42, "value": 0, "sellPrice": 5, "image": ""},
+    { "id": "polkastarter", "name": "Polkastarter", "quantity": 584.682, "eur": 0, "usd": 0, "location": "metamask", "paid": 1712, "value": 0, "sellPrice": 35, "image": ""},
+    { "id": "linear", "name": "Linear", "quantity": 9460.22031, "eur": 0, "usd": 0, "location": "metamask", "paid": 830, "value": 0, "sellPrice": 0.35, "image": ""},
+    { "id": "eur", "name": "Euro", "quantity": 1, "eur": 0, "usd": 0, "location": "binance", "paid": 200, "value": 0, "sellPrice": 0, "image": ""}
+  ]
+}
+
