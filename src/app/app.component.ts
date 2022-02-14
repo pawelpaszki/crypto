@@ -1,14 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CryptoService } from './crypto/crypto.service';
 import { Coin } from './coin/coin';
-import { COINS } from './coin/coinS';
+import { COINS } from './coin/coins';
 import { Subscription, interval, config } from 'rxjs';
 import { Title } from '@angular/platform-browser';
+import * as Highcharts from 'highcharts';
+import { CryptocurrencyComponent } from './cryptocurrency/cryptocurrency.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./style/style.css']
+  styleUrls: [
+    './style/other.css'
+  ]
 })
 export class AppComponent {
 
@@ -19,7 +23,8 @@ export class AppComponent {
   // total: number = 7050;
   tax: number = 4000;
   balance: number = 0;
-  public sortBy = 'xD';
+  usdBalance: number = 0;
+  public sortBy = 'value';
   public sortOrder = 'asc';
   constructor(public dataService: CryptoService, private titleService: Title) { }
 
@@ -87,31 +92,42 @@ export class AppComponent {
     }
   }
 
+  Highcharts: typeof Highcharts = Highcharts;
+  updateFlag = false;
+  chartOptions: Highcharts.Options = {
+    series: [{
+      data: [],
+      type: 'pie'
+    }],
+  };
+
   updateCoins() {
     this.balance = 0;
+    this.usdBalance = 0;
     this.coins = COINS;
     this.coins.forEach(coin => {
       if (coin.name !== 'Euro' && coin.id != 'flith') {
         this.dataService.getCoinInfo(coin.id).subscribe((data: any)=>{
-            coin.name = (data as any).name;
-            if ((data as any).market_data.current_price.usd !== undefined) {
-              if ((data as any).market_data.current_price.eur === 0) {
-                coin.eur = (data as any).market_data.current_price.usd;
-              } else {
-                coin.eur = (data as any).market_data.current_price.eur;
-              }
-              coin.usd = (data as any).market_data.current_price.usd;
-              coin._24h = (data as any).market_data.price_change_percentage_24h;
-              coin.image = (data as any).image.thumb;
-              coin.value = coin.eur * coin.quantity;
-              if (coin.name === 'Tether' || coin.name === 'Binance USD') {
-                coin.xD = 1;
-              } else {
-                coin.xD = coin.value / coin.paid;
-              }
-              this.balance = this.balance + coin.value;
-              console.log(this.balance);
+          coin.name = (data as any).name;
+          if ((data as any).market_data.current_price.usd !== undefined) {
+            if ((data as any).market_data.current_price.eur === 0) {
+              coin.eur = (data as any).market_data.current_price.usd;
+            } else {
+              coin.eur = (data as any).market_data.current_price.eur;
             }
+            coin.usd = (data as any).market_data.current_price.usd;
+            coin._24h = (data as any).market_data.price_change_percentage_24h;
+            coin.image = (data as any).image.thumb;
+            coin.value = coin.eur * coin.quantity;
+            if (coin.name === 'Tether' || coin.name === 'Binance USD') {
+              coin.xD = 1;
+            } else {
+              coin.xD = coin.value / coin.paid;
+            }
+            this.balance = this.balance + coin.value;
+            this.usdBalance = this.usdBalance + (coin.usd * coin.quantity);
+            console.log(this.balance);
+          }
         });
       } else if (coin.id === 'flith') {
         coin.value = coin.eur * coin.quantity;
@@ -121,11 +137,89 @@ export class AppComponent {
         this.balance = this.balance + coin.eur;
       }
     });
+
     this.sort(this.sortBy, this.sortOrder);
     setTimeout(() => {
       this.titleService.setTitle((Math.round(this.balance * 100) / 100).toString() + "€");
       console.log(this.balance);
+      this.chartOptions = {
+         chart : {
+            plotBorderWidth: 0,
+            backgroundColor: 'transparent',
+            plotShadow: false
+         },
+         title : {
+            text: '',
+            style: {
+              color: 'white'
+            }
+         },
+         tooltip : {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+         },
+         plotOptions : {
+            pie: {
+               allowPointSelect: true,
+               cursor: 'pointer',
+         
+               dataLabels: {
+                  enabled: false           
+               },
+         
+               showInLegend: false
+            }
+         },
+         series : [{
+            type: 'pie',
+            name: 'portfolio share',
+            data: []
+         }]
+      };
+      var prices: any[] = [];
+      var index: number = 0;
+      this.coins.forEach(coin => {
+        var value: number = (coin.value / this.balance) * 100;
+        console.log(value)
+          prices[index] = {
+            name: coin.name + ` (${coin.location})`,
+            y: value,
+            sliced: false,
+            selected: false
+          }
+        
+          prices[index] = {
+            name: coin.name + ` (${coin.location})`,
+            y: value,
+            sliced: false,
+            selected: false
+          }
+        index++
+      });
+      console.log(prices);
+      if (this.chartOptions.series !== undefined &&  this.chartOptions.plotOptions != undefined && this.chartOptions.plotOptions.pie != undefined) {
+        this.chartOptions.series[0] = {
+          type: 'pie',
+          data: prices,
+          name: this.chartOptions.series[0].name
+        }
+        this.chartVisible = true;
+        this.chartOptions.plotOptions.pie.dataLabels = {
+          enabled: true,
+          format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+          style: {
+             color: 'white'
+          }
+        }
+      }
     }, 5000);
     console.log(this.coins)
+  }
+
+  public chartVisible: boolean = false;
+
+  @ViewChild(CryptocurrencyComponent) child : CryptocurrencyComponent;
+
+  async invertChartVisibility(coin: Coin) {
+    await this.child.getChartData(coin.id, coin.name, 14);
   }
 }

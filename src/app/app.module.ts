@@ -7,7 +7,7 @@ import { CryptoService } from './crypto/crypto.service';
 import { FormsModule } from '@angular/forms';
 
 import { HighchartsChartModule } from 'highcharts-angular';
-import { CryptocurrencyComponent } from './cryptocurrency/cryptocurrency.component'; //
+import { CryptocurrencyComponent } from './cryptocurrency/cryptocurrency.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,8 @@ import { CryptocurrencyComponent } from './cryptocurrency/cryptocurrency.compone
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    HighchartsChartModule //
+    HighchartsChartModule,
+
   ],
   providers: [
     CryptoService
@@ -26,3 +27,4 @@ import { CryptocurrencyComponent } from './cryptocurrency/cryptocurrency.compone
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+  

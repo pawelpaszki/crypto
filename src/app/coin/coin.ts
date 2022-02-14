@@ -14,4 +14,5 @@ export interface Coin {
   _7d: number
   _30d: number
   prices: any[]
+  visible: boolean
 }
