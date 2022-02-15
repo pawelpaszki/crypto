@@ -87,7 +87,7 @@
   padding-left: 5px;
 }
  
- .container {
+ .container, .pr {
    text-align: left;
    overflow: hidden;
    width: 1000px;
@@ -96,9 +96,21 @@
    /* padding: 0 0 8em 0; */
  }
 
+ .days {
+   width: 150px;
+   margin-left: 8.333px;
+   margin-right: 8.333px;
+   background-color: #020213;
+   text-align: center;
+   padding: 10px;
+ }
  
+.pr {
+  padding-top: 1%;
+}
+
  @media (min-width: 1600px) {
-   .container, .fear {
+   .container, .pr, .fear {
      width: 1200px;
    }
    .fg {
@@ -110,6 +122,11 @@
      border-radius: 20px;
      padding-left: 5px;
    }
+   .days {
+    width: 180px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
  }
  
  .container td, .container th {

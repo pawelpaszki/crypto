@@ -1,3 +1,23 @@
+<table class="pr" *ngIf="chartVisible">
+  <tr>
+    <td (click)="changeChart(1)" class="days">
+      24h
+    </td>
+    <td (click)="changeChart(7)" class="days">
+      7d
+    </td>
+    <td (click)="changeChart(14)" class="days">
+      14d
+    </td>
+    <td (click)="changeChart(30)" class="days">
+      30d
+    </td>
+    <td (click)="changeChart(365)" class="days">
+      365d
+    </td>
+  </tr>
+</table>
+
 <div class="price" *ngIf="chartVisible">
   <div *ngIf="chartVisible">
     <highcharts-chart 

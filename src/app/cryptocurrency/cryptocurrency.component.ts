@@ -10,7 +10,10 @@ import * as Highcharts from 'highcharts';
 })
 export class CryptocurrencyComponent implements OnInit {
 
-  constructor(public dataService: CryptoService,) { }
+  constructor(public dataService: CryptoService) { }
+
+  public previousCoinId: string = "";
+  public previousCoinName: string = "";
 
   public prices : any[] = [];
 
@@ -18,6 +21,8 @@ export class CryptocurrencyComponent implements OnInit {
 
   async getChartData(id: string, name: string, days: number) {
     if (!this.chartVisible) {
+      this.previousCoinId = id;
+      this.previousCoinName = name;
       await this.dataService.getCoinChart(id, days).subscribe((chartData: any)=>{
         var tempPrices = [];
         tempPrices = chartData.prices;
@@ -68,4 +73,9 @@ export class CryptocurrencyComponent implements OnInit {
       type: 'line'
     }]
   };
+
+  async changeChart(days: number) {
+    this.chartVisible = false;
+    await this.getChartData(this.previousCoinId, this.previousCoinName, days);
+  }
 }
