@@ -18,8 +18,6 @@ export class PawelComponent {
   
     public jsonCoins: Coin[];
   
-    // total: number = 7050;
-    tax: number = 4000;
     balance: number = 0;
     usdBalance: number = 0;
     public sortBy = 'value';
@@ -104,7 +102,7 @@ export class PawelComponent {
       this.usdBalance = 0;
       this.coins = COINS;
       this.coins.forEach(coin => {
-        if (coin.name !== 'Euro' && coin.id != 'flith') {
+        if (coin.name !== 'Euro' && coin.id !== 'flith' && coin.id !== 'tenset-nft') {
           this.dataService.getCoinInfo(coin.id).subscribe((data: any)=>{
             coin.name = (data as any).name;
             if ((data as any).market_data.current_price.usd !== undefined) {
@@ -117,7 +115,7 @@ export class PawelComponent {
               coin._24h = (data as any).market_data.price_change_percentage_24h;
               coin.image = (data as any).image.thumb;
               coin.value = coin.eur * coin.quantity;
-              if (coin.name === 'Tether' || coin.name === 'Binance USD') {
+              if (coin.name === 'Tether' || coin.name === 'Binance USD' || coin.name === 'USD Coin') {
                 coin.xD = 1;
               } else {
                 coin.xD = coin.value / coin.paid;
@@ -127,10 +125,12 @@ export class PawelComponent {
               console.log(this.balance);
             }
           });
-        } else if (coin.id === 'flith') {
-          coin.value = coin.eur * coin.quantity;
+        } else if (coin.id === 'tenset-nft') {
+          console.log(coin)
+          coin.value = 14500;
           coin.xD = coin.value / coin.paid;
           this.balance = this.balance + coin.value;
+          this.usdBalance = this.usdBalance + (coin.usd * coin.quantity);
         } else {
           this.balance = this.balance + coin.eur;
         }
